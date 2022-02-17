@@ -1,0 +1,20 @@
+body {
+  font-family: sans-serif;
+}
+
+q {
+  display: block;
+  padding: 5px;
+  border-left: 4px gray solid;
+  margin-top: 10px;
+}
+
+q::before {
+  content: "";
+  /* content: open-quote; */ /*默认为被双引号包括*/
+}
+code {
+  padding: 0 2px;
+  background: #ef9d9d;
+  color: #fff;
+}
