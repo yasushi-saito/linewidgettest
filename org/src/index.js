@@ -41,7 +41,7 @@ function objectId(obj) {
 // ----------------------------------------------------------------------------
 
 const fullScreenRenderer = vtkFullScreenRenderWindow.newInstance({
-  background: [0, 0, 0],
+  background: [0.2, 0.3, 0.4],
 });
 const renderer = fullScreenRenderer.getRenderer();
 const renderWindow = fullScreenRenderer.getRenderWindow();
@@ -127,6 +127,7 @@ function setWidgetColor(currentWidget, color) {
 // shape change
 if (false) {
     const inputHandle1 = document.getElementById('idh1');
+    this.localRenderer.resetCamera();
     const inputHandle2 = document.getElementById('idh2');
 
     inputHandle1.addEventListener('input', updateHandleShape.bind(null, 1));
@@ -188,10 +189,11 @@ document.querySelector('#removeWidget').addEventListener('click', () => {
 // -----------------------------------------------------------
 // globals
 // -----------------------------------------------------------
-
+/*
 global.widget = widget;
 global.renderer = renderer;
 global.fullScreenRenderer = fullScreenRenderer;
 global.renderWindow = renderWindow;
 global.widgetManager = widgetManager;
 global.line = widgetHandle;
+*/
