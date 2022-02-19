@@ -83,23 +83,36 @@ const Example: FC<{}> = () => {
 
     const lineWidget = vtkLineWidget.newInstance();
     widget.current = lineWidget;
+
     const handle = vtkState.widgetManager.addWidget(lineWidget as any) as any;
     const state = lineWidget.getWidgetState();
+    const move = state.getMoveHandle();
+    move.setVisible(false);
+    move.setShape('voidSphere');
+
     const state1 = state.getHandle1();
-    // Note: any change to state{1,2} doesn't make any visual difference.
+    lineWidget.placeWidget([-120, 120, -120, 120, -120, 120]);
     state1.setVisible(true);
     state1.setShape('cone');
-    state1.setScale1(10.0);
+    state1.setScale1(30);
+    state1.setOrigin(0, 0, 0);
     handle.updateHandleVisibility(0);
 
     const state2 = state.getHandle2();
     state2.setShape('cone');
     state2.setVisible(true);
+    state2.setScale1(30);
+    state2.setOrigin(100, 100, 55);
     handle.updateHandleVisibility(1);
 
     handle.getInteractor().render();
     vtkState.widgetManager.grabFocus(lineWidget as any);
+    vtkState.renderer.resetCamera();
     vtkState.renderWindow.render();
+
+    lineWidget.onWidgetChange(() => {
+      console.log(`INTERACTION ${state1.getOrigin()} ${state2.getOrigin()}`);
+    });
   }, [showWidget]);
   return (
     <>
